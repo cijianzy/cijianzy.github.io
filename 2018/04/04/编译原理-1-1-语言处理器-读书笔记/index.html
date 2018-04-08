@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://cijianzy.com">
   <title>[编译原理]1.1-语言处理器 | 此间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="起因最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。 语言处理器作用&amp;amp;定义 编译器的主要工作起就是将源程序转成目标语言程序 而目标程序的主要任务就是处理输入，产出输出 解释器则是利用用户的输入执行源程序中指定操作，逐行执行 其他部分然而除了编译器以外，还需要其他部分才能产生一个完整的程序  预处理器：文件聚合，宏转">
+  <meta name="description" content="起因最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。 语言处理器作用&amp;amp;定义编译器的主要工作起就是将源程序转成目标语言程序 而目标程序的主要任务就是处理输入，产出输出 解释器则是利用用户的输入执行源程序中指定操作，逐行执行 其他部分然而除了编译器以外，还需要其他部分才能产生一个完整的程序  预处理器：文件聚合，宏转化">
 <meta name="keywords" content="Compiler,Reading-notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[编译原理]1.1-语言处理器">
 <meta property="og:url" content="http://cijianzy.com/2018/04/04/编译原理-1-1-语言处理器-读书笔记/index.html">
 <meta property="og:site_name" content="此间">
-<meta property="og:description" content="起因最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。 语言处理器作用&amp;amp;定义 编译器的主要工作起就是将源程序转成目标语言程序 而目标程序的主要任务就是处理输入，产出输出 解释器则是利用用户的输入执行源程序中指定操作，逐行执行 其他部分然而除了编译器以外，还需要其他部分才能产生一个完整的程序  预处理器：文件聚合，宏转">
-<meta property="og:updated_time" content="2018-04-08T03:56:49.292Z">
+<meta property="og:description" content="起因最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。 语言处理器作用&amp;amp;定义编译器的主要工作起就是将源程序转成目标语言程序 而目标程序的主要任务就是处理输入，产出输出 解释器则是利用用户的输入执行源程序中指定操作，逐行执行 其他部分然而除了编译器以外，还需要其他部分才能产生一个完整的程序  预处理器：文件聚合，宏转化">
+<meta property="og:updated_time" content="2018-04-08T06:29:57.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[编译原理]1.1-语言处理器">
-<meta name="twitter:description" content="起因最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。 语言处理器作用&amp;amp;定义 编译器的主要工作起就是将源程序转成目标语言程序 而目标程序的主要任务就是处理输入，产出输出 解释器则是利用用户的输入执行源程序中指定操作，逐行执行 其他部分然而除了编译器以外，还需要其他部分才能产生一个完整的程序  预处理器：文件聚合，宏转">
+<meta name="twitter:description" content="起因最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。 语言处理器作用&amp;amp;定义编译器的主要工作起就是将源程序转成目标语言程序 而目标程序的主要任务就是处理输入，产出输出 解释器则是利用用户的输入执行源程序中指定操作，逐行执行 其他部分然而除了编译器以外，还需要其他部分才能产生一个完整的程序  预处理器：文件聚合，宏转化">
   
     <link rel="alternative" href="/atom.xml" title="此间" type="application/atom+xml">
   
@@ -179,8 +179,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>最近想写一个 Swift2OC 的小工具，在实现过程中总是有些力不重新，所以萌生了了解一下编译器是如果理解程序的，故开此坑。</p>
-<h3 id="语言处理器"><a href="#语言处理器" class="headerlink" title="语言处理器"></a>语言处理器</h3><h4 id="作用-amp-定义"><a href="#作用-amp-定义" class="headerlink" title="作用&amp;定义"></a>作用&amp;定义</h4><hr>
-<p>编译器的主要工作起就是将源程序转成目标语言程序</p>
+<h3 id="语言处理器"><a href="#语言处理器" class="headerlink" title="语言处理器"></a>语言处理器</h3><h4 id="作用-amp-定义"><a href="#作用-amp-定义" class="headerlink" title="作用&amp;定义"></a>作用&amp;定义</h4><p>编译器的主要工作起就是将源程序转成目标语言程序</p>
 <p>而目标程序的主要任务就是处理输入，产出输出</p>
 <p>解释器则是利用用户的输入执行源程序中指定操作，逐行执行</p>
 <h4 id="其他部分"><a href="#其他部分" class="headerlink" title="其他部分"></a>其他部分</h4><p>然而除了编译器以外，还需要其他部分才能产生一个完整的程序</p>
